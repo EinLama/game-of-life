@@ -1,6 +1,10 @@
 
 (defparameter *width* 32)
 (defparameter *height* 10)
+
+; Remember alive cells in a hash-table.
+; The key of a hash entry is a cons with x and y position.
+; The value is truthy if a living cell resides at that position.
 (defparameter *cells* (make-hash-table :test #'equal))
 
 (defun spawn-random-cell ()
