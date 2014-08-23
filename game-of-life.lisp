@@ -14,12 +14,6 @@
     (setf (gethash (cons left top) *cells*) t)
     '(OUTSIDE OF WORLD)))
 
-(defun kill-cell-at (left top)
-  (if (and (and (<= left *width*) (>= left 0))
-           (and (<= top *height*) (>= top 0)))
-    (setf (gethash (cons left top) *cells*) nil)
-    '(OUTSIDE OF WORLD)))
-
 (defun cell-alive-at (left top)
   (if (and (and (<= left *width*) (>= left 0))
            (and (<= top *height*) (>= top 0)))
