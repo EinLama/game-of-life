@@ -26,14 +26,15 @@
     (gethash (cons left top) *cells*)
     nil))
 
+
 (defun print-world ()
-  (loop for y from 0 to *height*
-        collect (loop for x from 0 to *width*
-                      if (cell-alive-at x y)
-                      do (princ "X")
-                      else do (princ ".")
-                      if (= x *width*)
-                      do (princ (format nil "~%")))))
+     (loop for y below *height*
+           do (progn (fresh-line)
+                      (princ "|")
+                      (loop for x below *width*
+                            do (princ (cond ((cell-alive-at x y) "X")
+                                            (t "."))))
+                      (princ "|"))))
 
 (defun cells-for-next-generation ()
   (let ((new-gen (make-hash-table :test #'equal)))
